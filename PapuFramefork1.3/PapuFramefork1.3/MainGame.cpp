@@ -14,7 +14,7 @@ MainGame::MainGame()
 void MainGame::init() {
 	SDL_Init(SDL_INIT_EVERYTHING);
 	_window = SDL_CreateWindow(
-		"Clase2",
+		"Motor",
 		SDL_WINDOWPOS_CENTERED,
 		SDL_WINDOWPOS_CENTERED,
 		_width,
