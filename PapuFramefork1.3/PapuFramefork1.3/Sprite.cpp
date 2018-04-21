@@ -1,5 +1,6 @@
 #include "Sprite.h"
-
+#include "Vertex.h"
+#include <cstddef>
 
 
 Sprite::Sprite()
@@ -18,24 +19,21 @@ void Sprite::init(float x,float y,
 		glGenBuffers(1, &_vboID);
 	}
 
-	float vertexData[12];
-	vertexData[0] = _x + _width;
-	vertexData[1] = _y + _height;
+	Vertex vertexData[6];
+	vertexData[0].setPosition(_x+_width,_y+_height);
+	vertexData[1].setPosition(_x, _y + _height);
+	vertexData[2].setPosition(_x, _y);
+	vertexData[3].setPosition(_x, _y);
+	vertexData[4].setPosition(_x + _width, _y);
+	vertexData[5].setPosition(_x + _width, _y + _height);
 
-	vertexData[2] = _x;
-	vertexData[3] = _y+ _height;
-
-	vertexData[4] = _x;
-	vertexData[5] = _y;
-
-	vertexData[6] = _x;
-	vertexData[7] = _y;
-
-	vertexData[8] = _x + _width;
-	vertexData[9] = _y;
-
-	vertexData[10] = _x + _width;
-	vertexData[11] = _y + _height;
+	for (int i = 0; i < 6; i++)
+	{
+		vertexData[i].setColorRGBA(255, 0, 0, 255);
+	}
+	vertexData[1].setColorRGBA(0, 0, 255, 255);
+	vertexData[4].setColorRGBA(0, 255, 0, 255);
+	
 
 	glBindBuffer(GL_ARRAY_BUFFER, _vboID);
 	glBufferData(GL_ARRAY_BUFFER, 
@@ -50,7 +48,13 @@ void Sprite::draw() {
 	glBindBuffer(GL_ARRAY_BUFFER, _vboID);
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(
-		0, 2, GL_FLOAT, GL_FALSE, 0, 0
+		0, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex),
+		(void*)offsetof(Vertex, position)
+	);
+	glVertexAttribPointer(
+		1, 4, GL_UNSIGNED_BYTE, GL_TRUE, 
+				sizeof(Vertex), 
+			(void*)offsetof(Vertex,color)
 	);
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 	glDisableVertexAttribArray(0);

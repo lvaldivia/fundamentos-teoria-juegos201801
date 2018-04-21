@@ -3,46 +3,44 @@
 
 using namespace std;
 
-MainGame::MainGame()
+MainGame::MainGame(): 
+			_width(800),_height(600),
+			_gameState(GameState::PLAY),
+			_time(0)
 {
-	_window = nullptr;
-	_width = 800;
-	_height = 600;
-	_gameState = GameState::PLAY;
 }
 
 void MainGame::init() {
 	SDL_Init(SDL_INIT_EVERYTHING);
-	_window = SDL_CreateWindow(
-		"Motor",
-		SDL_WINDOWPOS_CENTERED,
-		SDL_WINDOWPOS_CENTERED,
-		_width,
-		_height,
-		SDL_WINDOW_OPENGL
-	);
-	if (_window == nullptr) {
-		
-	}
-	SDL_GLContext glContext =
-		SDL_GL_CreateContext(_window);
+	_window.create("Motor",_width, _height, 0);
 
-	GLenum error = glewInit();
-	if (error != GLEW_OK) {
+	/*SDL_GL_SetAttribute(
+		SDL_GL_DOUBLEBUFFER, 1);*/
+	initShaders();
+}
 
-	}
-	SDL_GL_SetAttribute(
-		SDL_GL_DOUBLEBUFFER, 1);
-	glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
-
+void MainGame::initShaders() {
+	_program.compileShaders("Shaders/colorShaderVert.txt",
+		"Shaders/colorShaderFrag.txt");
+	_program.addAtribute("vertexPosition");
+	_program.addAtribute("vertexColor");
+	_program.linkShader();
 }
 
 void MainGame::draw() {
 	glClearDepth(1.0);
 	glClear(GL_COLOR_BUFFER_BIT
 		| GL_DEPTH_BUFFER_BIT);
+	_program.use();
+	
+	GLuint timeLocation = _program.getUniformLocation("time");
+	glUniform1f(timeLocation, _time);
+	_sprite.draw();
+	_program.unuse();
 	//draw de los elementos que creamos
-	SDL_GL_SwapWindow(_window);
+
+	_window.swapBuffer();
+	
 
 }
 
@@ -55,22 +53,20 @@ void MainGame::processInput() {
 				_gameState = GameState::EXIT;
 			break;
 			case SDL_MOUSEMOTION:
-
-				cout << event.motion.x 
-					<< event.motion.y << endl;
 				break;
 		}
 	}
-
 }
 
 void MainGame::run() {
 	init();
+	_sprite.init(-1, -1, 1, 1);
 	update();
 }
 
 void MainGame::update() {
-	if (_gameState != GameState::EXIT) {
+	while (_gameState != GameState::EXIT) {
+		_time += 0.002f;
 		processInput();
 		draw();
 	}
