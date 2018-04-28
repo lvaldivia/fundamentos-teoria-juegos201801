@@ -1,7 +1,7 @@
 #include "Sprite.h"
 #include "Vertex.h"
 #include <cstddef>
-
+#include "ResourceManager.h"
 
 Sprite::Sprite()
 {
@@ -9,7 +9,7 @@ Sprite::Sprite()
 }
 
 void Sprite::init(float x,float y,
-	int width, int height) {
+	int width, int height, string texturePath) {
 	_x = x;
 	_y = _y;
 	_width = width;
@@ -18,6 +18,8 @@ void Sprite::init(float x,float y,
 	if (_vboID == 0) {
 		glGenBuffers(1, &_vboID);
 	}
+
+	_texture = ResourceManager::getTexture(texturePath);
 
 	Vertex vertexData[6];
 
