@@ -1,13 +1,4 @@
-﻿  TextureCache.cpp
-  Sprite.cpp
-c:\users\proyecto\documents\fundamentos-teoria-juegos201801\papuframefork1.3\papuframefork1.3\sprite.cpp(22): error C2275: 'ResourceManager': illegal use of this type as an expression
-  c:\users\proyecto\documents\fundamentos-teoria-juegos201801\papuframefork1.3\papuframefork1.3\resourcemanager.h(7): note: see declaration of 'ResourceManager'
-c:\users\proyecto\documents\fundamentos-teoria-juegos201801\papuframefork1.3\papuframefork1.3\sprite.cpp(22): error C2228: left of '.getTexture' must have class/struct/union
-  Generating Code...
-  Compiling...
-  MainGame.cpp
-c:\users\proyecto\documents\fundamentos-teoria-juegos201801\papuframefork1.3\papuframefork1.3\maingame.cpp(66): error C2660: 'Sprite::init': function does not take 4 arguments
-  Generating Code...
-  Compiling...
-  main.cpp
-  Generating Code...
+﻿  MainGame.cpp
+c:\users\profesores\documents\fundamentos-teoria-juegos201801\papuframefork1.3\papuframefork1.3\maingame.cpp(50): warning C4018: '<': signed/unsigned mismatch
+  PapuFramefork1.3.vcxproj -> C:\Users\Profesores\Documents\fundamentos-teoria-juegos201801\PapuFramefork1.3\Debug\PapuFramefork1.3.exe
+  PapuFramefork1.3.vcxproj -> C:\Users\Profesores\Documents\fundamentos-teoria-juegos201801\PapuFramefork1.3\Debug\PapuFramefork1.3.pdb (Partial PDB)

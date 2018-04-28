@@ -11,7 +11,7 @@ Sprite::Sprite()
 void Sprite::init(float x,float y,
 	int width, int height, string texturePath) {
 	_x = x;
-	_y = _y;
+	_y = y;
 	_width = width;
 	_height = height;
 
@@ -56,6 +56,7 @@ void Sprite::init(float x,float y,
 }
 
 void Sprite::draw() {
+	glBindTexture(GL_TEXTURE_2D, _texture.id);
 	glBindBuffer(GL_ARRAY_BUFFER, _vboID);
 	glEnableVertexAttribArray(0);
 

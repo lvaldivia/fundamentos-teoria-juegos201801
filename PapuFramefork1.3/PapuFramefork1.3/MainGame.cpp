@@ -1,5 +1,6 @@
 #include "MainGame.h"
 #include <iostream>
+#include <glm\glm.hpp>
 
 using namespace std;
 
@@ -8,6 +9,7 @@ MainGame::MainGame():
 			_gameState(GameState::PLAY),
 			_time(0)
 {
+	_camera.init(_width, _height);
 }
 
 void MainGame::init() {
@@ -24,6 +26,7 @@ void MainGame::initShaders() {
 		"Shaders/colorShaderFrag.txt");
 	_program.addAtribute("vertexPosition");
 	_program.addAtribute("vertexColor");
+	_program.addAtribute("vertexUV");
 	_program.linkShader();
 }
 
@@ -37,8 +40,20 @@ void MainGame::draw() {
 	glUniform1f(timeLocation, _time);
 	GLuint imageLocation = 
 			_program.getUniformLocation("image");
-	glUniform1i(timeLocation, imageLocation);
-	_sprite.draw();
+	glUniform1i(imageLocation,0);
+	glm::mat4 cameraMatrix = _camera.getCameraMatrix();
+	/*GLuint pLocation =
+		_program.getUniformLocation("P");
+	glUniformMatrix4fv(pLocation, 1, GL_FALSE,
+		&(cameraMatrix[0][0]));*/
+
+	for (int i = 0; i < _sprites.size(); i++)
+	{
+		_sprites[i]->draw();
+	}
+
+
+	//_sprite.draw();
 	_program.unuse();
 	//draw de los elementos que creamos
 
@@ -63,7 +78,11 @@ void MainGame::processInput() {
 
 void MainGame::run() {
 	init();
-	_sprite.init(-1, -1, 1, 1);
+	_sprites.push_back(new Sprite());
+	_sprites.back()->init(-1, -1, 1, 1, "Textures/mario.png");
+
+	_sprites.push_back(new Sprite());
+	_sprites.back()->init(0, -1, 1, 1, "Textures/mario.png");
 	update();
 }
 
@@ -72,6 +91,7 @@ void MainGame::update() {
 		_time += 0.002f;
 		processInput();
 		draw();
+		_camera.update();
 	}
 }
 

@@ -5,6 +5,7 @@
 #include "GLS_Program.h"
 #include "Window.h"
 #include "Camera2D.h"
+#include <vector>
 
 enum class GameState {
 	PLAY,EXIT
@@ -17,6 +18,7 @@ private:
 	int _height;
 	GLS_Program _program;
 	Sprite _sprite;
+	vector<Sprite*> _sprites;
 	void init();
 	void initShaders();
 	float _time;
