@@ -13,6 +13,7 @@ bool IOManager::readFileBuffer(string &filePath,
 	file.seekg(0, ios::end);
 	int fileSize = file.tellg();
 	file.seekg(0, ios::beg);
+	fileSize -= file.tellg();
 
 	buffer.resize(fileSize);
 	file.read((char*)&(buffer[0]), fileSize);

@@ -32,9 +32,12 @@ void MainGame::draw() {
 	glClear(GL_COLOR_BUFFER_BIT
 		| GL_DEPTH_BUFFER_BIT);
 	_program.use();
-	
+	glActiveTexture(GL_TEXTURE0);
 	GLuint timeLocation = _program.getUniformLocation("time");
 	glUniform1f(timeLocation, _time);
+	GLuint imageLocation = 
+			_program.getUniformLocation("image");
+	glUniform1i(timeLocation, imageLocation);
 	_sprite.draw();
 	_program.unuse();
 	//draw de los elementos que creamos
