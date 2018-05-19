@@ -27,7 +27,7 @@ void MainGame::initLevel() {
 	_spriteBacth.init();
 	_player = new Player();
 	_player->init
-		(5, _levels[_currenLevel]->getPlayerPosition(), 
+		(1.0f, _levels[_currenLevel]->getPlayerPosition(), 
 				&_inputManager);
 }
 
@@ -111,6 +111,9 @@ void MainGame::update() {
 		procesInput();
 		draw();
 		_camera.update();
+		_player->update(
+			_levels[_currenLevel]->getLevelData());
+		_camera.setPosition(_player->getPosition());
 		_time += 0.002f;
 	}
 }
