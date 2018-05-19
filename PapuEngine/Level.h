@@ -1,30 +1,45 @@
 #pragma once
-#include "SpriteBacth.h"
 #include <string>
 #include <vector>
+#include "SpriteBacth.h"
 
 using namespace std;
 
 const int TILE_WIDTH = 64;
-
 class Level
 {
+
 private:
 	vector<string> _levelData;
 	int _numHumans;
 	void parseLevel();
 public:
+
+	int getNumHumans() const {
+		return _numHumans;
+	}
 	glm::vec2 _playerPosition;
-	vector<glm::vec2> _zombiePosition;
-	glm::vec2 getPlayerPosition()const {
-		return _playerPosition;
+	std::vector<glm::vec2> _zombiesPosition;
+	glm::vec2 getPlayerPosition() const { 
+		return _playerPosition; 
+	};
+
+	const std::vector<std::string>& getLevelData() {
+		return _levelData;
 	}
-	vector<glm::vec2> getZombiePosition()const {
-		return _zombiePosition;
+	int getWidth() const {
+		return _levelData[0].size();
 	}
+	int getHeight() const {
+		return _levelData[0].size();
+	}
+	std::vector<glm::vec2> getZombiesPosition()const {
+		return _zombiesPosition;
+	};
+
+	Level(const std::string& fileName);
 	void draw();
-	SpriteBacth _spritebatch;
-	Level(const string& filename);
+	SpriteBacth _spriteBatch;
 	~Level();
 };
 

@@ -5,9 +5,9 @@ struct Position {
 	float x;
 	float y;
 
-	void set(int _x, int _y) {
+	void set(float _x,float _y) {
 		x = _x;
-		x = _x;
+		y = _y;
 	}
 };
 
@@ -28,8 +28,7 @@ struct Color {
 struct UV {
 	float u;
 	float v;
-
-	void set(float _u, float _v) {
+	void set(float _u,float _v) {
 		u = _u;
 		v = _v;
 	}

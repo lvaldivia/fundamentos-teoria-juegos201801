@@ -8,6 +8,7 @@
 #include "SpriteBacth.h"
 #include "InputManager.h"
 #include "Level.h"
+#include "Player.h"
 #include "Human.h"
 #include "Zombie.h"
 
@@ -31,8 +32,12 @@ private:
 	SpriteBacth _spriteBacth;
 	InputManager _inputManager;
 	vector<Level*> _levels;
+	vector<Human*>  _humans;
+	vector<Zombie*> _zombies;
+	Player* _player;
+	int _currenLevel;
 	void initLevel();
-	int _currentLevel;
+	void updateAgents();
 	
 public:
 	MainGame();

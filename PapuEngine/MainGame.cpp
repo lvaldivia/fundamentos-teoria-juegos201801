@@ -1,10 +1,10 @@
 #include "MainGame.h"
-#include "Sprite.h"
 #include "ImageLoader.h"
 #include <iostream>
 #include "ResourceManager.h"
 #include "PapuEngine.h"
-
+#include <random>
+#include <ctime>
 
 using namespace std;
 
@@ -15,16 +15,16 @@ void MainGame::run() {
 
 void MainGame::init() {
 	Papu::init();
-	_window.create("Zombies v1", _witdh, _height, 0);
-	initShaders();
-	_spriteBacth.init();
+	_window.create("Zombies V2", _witdh, _height, 0);
+	glClearColor(0.7f, 0.7f, 0.7f, 1.0f);
 	initLevel();
+	initShaders();
 }
 
 void MainGame::initLevel() {
-	_levels.push_back(
-			new Level("Levels/level1.txt"));
-	_currentLevel = 0;
+	_levels.push_back(new Level("Levels/level1.txt"));
+	_currenLevel = 0;
+	_spriteBacth.init();
 }
 
 void MainGame::initShaders() {
@@ -46,7 +46,7 @@ void MainGame::draw() {
 	//glBindTexture(GL_TEXTURE_2D, _texture.id);
 
 	/*GLuint timeLocation = 
-		_program.getUniformLocation("hola");
+		_program.getUniformLocation("time");
 
 	glUniform1f(timeLocation,_time);*/
 
@@ -60,9 +60,12 @@ void MainGame::draw() {
 	glUniform1i(imageLocation, 0);
 
 	_spriteBacth.begin();
-	_levels[_currentLevel]->draw();
+	_levels[_currenLevel]->draw();
+
 	_spriteBacth.end();
 	_spriteBacth.renderBatch();
+
+	glBindTexture(GL_TEXTURE_2D, 0);
 
 	_program.unuse();
 	_window.swapBuffer();
@@ -70,16 +73,32 @@ void MainGame::draw() {
 
 void MainGame::procesInput() {
 	SDL_Event event;
+	const float CAMERA_SPEED = 20.0f;
+	const float SCALE_SPEED = 0.1f;
 	while (SDL_PollEvent(&event))
 	{
 		switch (event.type)
 		{
-		case SDL_QUIT:
-			_gameState = GameState::EXIT;
+			case SDL_QUIT:
+				_gameState = GameState::EXIT;
+				break;
+			case SDL_MOUSEMOTION:
+				_inputManager.setMouseCoords((float)event.motion.x,(float)event.motion.y);
 			break;
+			case  SDL_KEYUP:
+				_inputManager.releaseKey(event.key.keysym.sym);
+				break;
+			case  SDL_KEYDOWN:
+				_inputManager.pressKey(event.key.keysym.sym);
+				break;
+			case SDL_MOUSEBUTTONDOWN:
+				_inputManager.pressKey(event.button.button);
+				break;
+			case SDL_MOUSEBUTTONUP:
+				_inputManager.releaseKey(event.button.button);
+				break;
 		}
 	}
-		
 }
 
 void MainGame::update() {
@@ -92,12 +111,12 @@ void MainGame::update() {
 	}
 }
 
-
 MainGame::MainGame(): 
 					  _witdh(800),
 					  _height(600),
 					  _gameState(GameState::PLAY),
-					  _time(0)
+					  _time(0),
+					  _player(nullptr)
 {
 	_camera.init(_witdh, _height);
 }
