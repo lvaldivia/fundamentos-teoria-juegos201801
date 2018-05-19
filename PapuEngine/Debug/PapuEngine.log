@@ -1,4 +1,6 @@
 ﻿  MainGame.cpp
+c:\users\proyecto\documents\fundamentos-teoria-juegos201801\papuengine\maingame.cpp(34): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\proyecto\documents\fundamentos-teoria-juegos201801\papuengine\maingame.cpp(46): warning C4018: '<': signed/unsigned mismatch
 cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
   PapuEngine.vcxproj -> C:\Users\Proyecto\Documents\fundamentos-teoria-juegos201801\Debug\PapuEngine.exe
   PapuEngine.vcxproj -> C:\Users\Proyecto\Documents\fundamentos-teoria-juegos201801\Debug\PapuEngine.pdb (Partial PDB)

@@ -29,6 +29,27 @@ void MainGame::initLevel() {
 	_player->init
 		(1.0f, _levels[_currenLevel]->getPlayerPosition(), 
 				&_inputManager);
+	_humans.push_back(_player);
+	
+	std::mt19937 randomEngine(time(nullptr));
+	std::uniform_int_distribution<int>randomPox(
+		1,_levels[_currenLevel]->getWidth()-2
+		);
+	std::uniform_int_distribution<int>randomPoY(
+		1, _levels[_currenLevel]->getWidth() - 2
+	);
+	for (size_t i = 0; i < _levels[_currenLevel]->getZombiesPosition().size();i++) {
+		_zombies.push_back(new Zombie());
+		_zombies.back()->init(1.0f, _levels[_currenLevel]->getZombiesPosition()[i]);
+	}
+	for (size_t i = 0; i < 
+			_levels[_currenLevel]->getNumHumans(); i++)
+	{
+		_humans.push_back(new Human());
+		glm::vec2 pos(randomPox(randomEngine) *TILE_WIDTH,
+					randomPoY(randomEngine) * TILE_WIDTH);
+		_humans.back()->init(1.0f, pos);
+	}
 }
 
 void MainGame::initShaders() {
@@ -65,7 +86,15 @@ void MainGame::draw() {
 
 	_spriteBacth.begin();
 	_levels[_currenLevel]->draw();
-	_player->draw(_spriteBacth);
+	for (size_t i = 0; i < _humans.size(); i++)
+	{
+		_humans[i]->draw(_spriteBacth);
+	}
+
+	for (size_t i = 0; i < _zombies.size(); i++)
+	{
+		_zombies[i]->draw(_spriteBacth);
+	}
 	_spriteBacth.end();
 	_spriteBacth.renderBatch();
 
@@ -101,6 +130,12 @@ void MainGame::procesInput() {
 			case SDL_MOUSEBUTTONUP:
 				_inputManager.releaseKey(event.button.button);
 				break;
+		}
+		if (_inputManager.isKeyPressed(SDLK_q)) {
+			_camera.setScale(_camera.getScale() + SCALE_SPEED);
+		}
+		if (_inputManager.isKeyPressed(SDLK_e)) {
+			_camera.setScale(_camera.getScale() - SCALE_SPEED);
 		}
 	}
 }
