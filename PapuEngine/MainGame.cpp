@@ -25,6 +25,10 @@ void MainGame::initLevel() {
 	_levels.push_back(new Level("Levels/level1.txt"));
 	_currenLevel = 0;
 	_spriteBacth.init();
+	_player = new Player();
+	_player->init
+		(5, _levels[_currenLevel]->getPlayerPosition(), 
+				&_inputManager);
 }
 
 void MainGame::initShaders() {
@@ -61,7 +65,7 @@ void MainGame::draw() {
 
 	_spriteBacth.begin();
 	_levels[_currenLevel]->draw();
-
+	_player->draw(_spriteBacth);
 	_spriteBacth.end();
 	_spriteBacth.renderBatch();
 

@@ -37,7 +37,6 @@ private:
 	Player* _player;
 	int _currenLevel;
 	void initLevel();
-	void updateAgents();
 	
 public:
 	MainGame();

@@ -1,3 +1,9 @@
-﻿  Window.cpp
-  PapuEngine.vcxproj -> C:\Users\Luis\Documents\papu-framework\Debug\PapuEngine.exe
-  PapuEngine.vcxproj -> C:\Users\Luis\Documents\papu-framework\Debug\PapuEngine.pdb (Partial PDB)
+﻿  MainGame.cpp
+  Level.cpp
+c:\users\proyecto\documents\fundamentos-teoria-juegos201801\papuengine\level.cpp(38): warning C4018: '<': signed/unsigned mismatch
+c:\users\proyecto\documents\fundamentos-teoria-juegos201801\papuengine\level.cpp(40): warning C4018: '<': signed/unsigned mismatch
+c:\users\proyecto\documents\fundamentos-teoria-juegos201801\papuengine\level.cpp(64): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\proyecto\documents\fundamentos-teoria-juegos201801\papuengine\level.cpp(65): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
+  PapuEngine.vcxproj -> C:\Users\Proyecto\Documents\fundamentos-teoria-juegos201801\Debug\PapuEngine.exe
+  PapuEngine.vcxproj -> C:\Users\Proyecto\Documents\fundamentos-teoria-juegos201801\Debug\PapuEngine.pdb (Partial PDB)
