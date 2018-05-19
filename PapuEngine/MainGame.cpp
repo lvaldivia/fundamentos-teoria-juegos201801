@@ -15,9 +15,16 @@ void MainGame::run() {
 
 void MainGame::init() {
 	Papu::init();
-	_window.create("Engine", _witdh, _height, 0);
+	_window.create("Zombies v1", _witdh, _height, 0);
 	initShaders();
 	_spriteBacth.init();
+	initLevel();
+}
+
+void MainGame::initLevel() {
+	_levels.push_back(
+			new Level("Levels/level1.txt"));
+	_currentLevel = 0;
 }
 
 void MainGame::initShaders() {
@@ -39,7 +46,7 @@ void MainGame::draw() {
 	//glBindTexture(GL_TEXTURE_2D, _texture.id);
 
 	/*GLuint timeLocation = 
-		_program.getUniformLocation("time");
+		_program.getUniformLocation("hola");
 
 	glUniform1f(timeLocation,_time);*/
 
@@ -53,6 +60,9 @@ void MainGame::draw() {
 	glUniform1i(imageLocation, 0);
 
 	_spriteBacth.begin();
+	_levels[_currentLevel]->draw();
+	_spriteBacth.end();
+	_spriteBacth.renderBatch();
 
 	_program.unuse();
 	_window.swapBuffer();

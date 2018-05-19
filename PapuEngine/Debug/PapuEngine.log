@@ -1,25 +1,23 @@
-﻿  Window.cpp
-  TextureCache.cpp
-  SpriteBacth.cpp
-c:\users\luis\documents\fundamentos-teoria-juegos201801\papuengine\spritebacth.cpp(15): warning C4018: '<': signed/unsigned mismatch
-c:\users\luis\documents\fundamentos-teoria-juegos201801\papuengine\spritebacth.cpp(44): warning C4018: '<': signed/unsigned mismatch
-c:\users\luis\documents\fundamentos-teoria-juegos201801\papuengine\spritebacth.cpp(72): warning C4018: '<': signed/unsigned mismatch
-  Sprite.cpp
-  ResourceManager.cpp
-  picoPNG.cpp
-  PapuEngine.cpp
-  MainGame.cpp
-  main.cpp
-  IOManager.cpp
-c:\users\luis\documents\fundamentos-teoria-juegos201801\papuengine\iomanager.cpp(15): warning C4244: 'initializing': conversion from 'std::streamoff' to 'int', possible loss of data
-c:\users\luis\documents\fundamentos-teoria-juegos201801\papuengine\iomanager.cpp(18): warning C4244: '-=': conversion from 'std::streamoff' to 'int', possible loss of data
-  InputManager.cpp
-  ImageLoader.cpp
-c:\users\luis\documents\fundamentos-teoria-juegos201801\papuengine\imageloader.cpp(36): warning C4244: '=': conversion from 'unsigned long' to 'float', possible loss of data
-c:\users\luis\documents\fundamentos-teoria-juegos201801\papuengine\imageloader.cpp(37): warning C4244: '=': conversion from 'unsigned long' to 'float', possible loss of data
-  GLS_Program.cpp
-  Error.cpp
-  Camera2D.cpp
+﻿  Actor.cpp
+c:\users\proyecto\documents\fundamentos-teoria-juegos201801\papuengine\vertex.h(9): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\proyecto\documents\fundamentos-teoria-juegos201801\papuengine\vertex.h(10): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\proyecto\documents\fundamentos-teoria-juegos201801\papuengine\vertex.h(47): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   Generating Code...
-  PapuEngine.vcxproj -> C:\Users\Luis\Documents\fundamentos-teoria-juegos201801\Debug\PapuEngine.exe
-  PapuEngine.vcxproj -> C:\Users\Luis\Documents\fundamentos-teoria-juegos201801\Debug\PapuEngine.pdb (Partial PDB)
+  Compiling...
+  MainGame.cpp
+c:\users\proyecto\documents\fundamentos-teoria-juegos201801\papuengine\vertex.h(9): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\proyecto\documents\fundamentos-teoria-juegos201801\papuengine\vertex.h(10): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\proyecto\documents\fundamentos-teoria-juegos201801\papuengine\vertex.h(47): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
+  Compiling...
+  main.cpp
+c:\users\proyecto\documents\fundamentos-teoria-juegos201801\papuengine\vertex.h(9): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\proyecto\documents\fundamentos-teoria-juegos201801\papuengine\vertex.h(10): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\proyecto\documents\fundamentos-teoria-juegos201801\papuengine\vertex.h(47): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Zombie.cpp
+c:\users\proyecto\documents\fundamentos-teoria-juegos201801\papuengine\vertex.h(9): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\proyecto\documents\fundamentos-teoria-juegos201801\papuengine\vertex.h(10): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\proyecto\documents\fundamentos-teoria-juegos201801\papuengine\vertex.h(47): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
+  PapuEngine.vcxproj -> C:\Users\Proyecto\Documents\fundamentos-teoria-juegos201801\Debug\PapuEngine.exe
+  PapuEngine.vcxproj -> C:\Users\Proyecto\Documents\fundamentos-teoria-juegos201801\Debug\PapuEngine.pdb (Partial PDB)
