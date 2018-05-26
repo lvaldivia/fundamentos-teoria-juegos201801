@@ -99,6 +99,27 @@ bool Actor::collideWithLevel(
 
 }
 
+bool Actor::collideWithActor(Actor* actor) {
+	glm::vec2 centerPosA = _position 
+				+ glm::vec2(AGENT_WIDTH / 2);
+
+	glm::vec2 centerPosB = actor->getPosition() +
+				glm::vec2(AGENT_WIDTH / 2);
+	glm::vec2 distance = centerPosA - centerPosB;
+	const float MIN_DISTANCE = AGENT_RADIUS / 2;
+	float dist = glm::length(distance);
+	float collisionDepth = MIN_DISTANCE - dist;
+	if (collisionDepth > 0) {
+		glm::vec2 collisionDepthVec =
+			glm::normalize(distance) * collisionDepth;
+
+		_position += collisionDepthVec / 2.0f;
+		actor->_position -= collisionDepthVec / 2.0f;
+		return true;
+	}
+	return false;
+}
+
 Actor::~Actor()
 {
 }

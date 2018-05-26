@@ -118,10 +118,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Camera2D.cpp" />
     <ClCompile Include="Error.cpp" />
     <ClCompile Include="GLS_Program.cpp" />
+    <ClCompile Include="Gun.cpp" />
     <ClCompile Include="Human.cpp" />
+    <ClCompile Include="IGameScreen.cpp" />
     <ClCompile Include="ImageLoader.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="IOManager.cpp" />
@@ -132,6 +135,7 @@
     <ClCompile Include="picoPNG.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="ScreenList.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteBacth.cpp" />
     <ClCompile Include="TextureCache.cpp" />
@@ -140,10 +144,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h" />
+    <ClInclude Include="Bullet.h" />
     <ClInclude Include="Camera2D.h" />
     <ClInclude Include="Error.h" />
     <ClInclude Include="GLS_Program.h" />
     <ClInclude Include="GLTexture.h" />
+    <ClInclude Include="Gun.h" />
+    <ClInclude Include="IGameScreen.h" />
+    <ClInclude Include="ScreenIndices.h" />
     <ClInclude Include="Human.h" />
     <ClInclude Include="ImageLoader.h" />
     <ClInclude Include="InputManager.h" />
@@ -154,6 +162,7 @@
     <ClInclude Include="picoPNG.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="ScreenList.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteBacth.h" />
     <ClInclude Include="TextureCache.h" />

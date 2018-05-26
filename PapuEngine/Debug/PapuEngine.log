@@ -1,6 +1,62 @@
-﻿  MainGame.cpp
-c:\users\proyecto\documents\fundamentos-teoria-juegos201801\papuengine\maingame.cpp(34): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\users\proyecto\documents\fundamentos-teoria-juegos201801\papuengine\maingame.cpp(46): warning C4018: '<': signed/unsigned mismatch
-cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
-  PapuEngine.vcxproj -> C:\Users\Proyecto\Documents\fundamentos-teoria-juegos201801\Debug\PapuEngine.exe
-  PapuEngine.vcxproj -> C:\Users\Proyecto\Documents\fundamentos-teoria-juegos201801\Debug\PapuEngine.pdb (Partial PDB)
+﻿  Zombie.cpp
+  Player.cpp
+  Gun.cpp
+c:\users\pcsilval\documents\fundamentos-teoria-juegos201801\papuengine\gun.cpp(16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\pcsilval\documents\fundamentos-teoria-juegos201801\papuengine\gun.cpp(29): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\pcsilval\documents\fundamentos-teoria-juegos201801\papuengine\gun.cpp(32): warning C4018: '<': signed/unsigned mismatch
+c:\program files (x86)\microsoft visual studio 14.0\vc\include\xmemory0(737): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\xmemory0(857): note: see reference to function template instantiation 'void std::allocator<_Ty>::construct<_Objty,const glm::vec2&,glm::tvec2<float,0>,float&,int&>(_Objty *,const glm::vec2 &,glm::tvec2<float,0> &&,float &,int &)' being compiled
+          with
+          [
+              _Ty=Bullet,
+              _Objty=Bullet
+          ]
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\xmemory0(857): note: see reference to function template instantiation 'void std::allocator<_Ty>::construct<_Objty,const glm::vec2&,glm::tvec2<float,0>,float&,int&>(_Objty *,const glm::vec2 &,glm::tvec2<float,0> &&,float &,int &)' being compiled
+          with
+          [
+              _Ty=Bullet,
+              _Objty=Bullet
+          ]
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\xmemory0(996): note: see reference to function template instantiation 'void std::allocator_traits<_Alloc>::construct<_Ty,const glm::vec2&,glm::tvec2<float,0>,float&,int&>(std::allocator<_Ty> &,_Objty *,const glm::vec2 &,glm::tvec2<float,0> &&,float &,int &)' being compiled
+          with
+          [
+              _Alloc=std::allocator<Bullet>,
+              _Ty=Bullet,
+              _Objty=Bullet
+          ]
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\xmemory0(995): note: see reference to function template instantiation 'void std::allocator_traits<_Alloc>::construct<_Ty,const glm::vec2&,glm::tvec2<float,0>,float&,int&>(std::allocator<_Ty> &,_Objty *,const glm::vec2 &,glm::tvec2<float,0> &&,float &,int &)' being compiled
+          with
+          [
+              _Alloc=std::allocator<Bullet>,
+              _Ty=Bullet,
+              _Objty=Bullet
+          ]
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\vector(930): note: see reference to function template instantiation 'void std::_Wrap_alloc<std::allocator<_Ty>>::construct<_Ty,const glm::vec2&,glm::tvec2<float,0>,float&,int&>(_Ty *,const glm::vec2 &,glm::tvec2<float,0> &&,float &,int &)' being compiled
+          with
+          [
+              _Ty=Bullet
+          ]
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\vector(929): note: see reference to function template instantiation 'void std::_Wrap_alloc<std::allocator<_Ty>>::construct<_Ty,const glm::vec2&,glm::tvec2<float,0>,float&,int&>(_Ty *,const glm::vec2 &,glm::tvec2<float,0> &&,float &,int &)' being compiled
+          with
+          [
+              _Ty=Bullet
+          ]
+  c:\users\pcsilval\documents\fundamentos-teoria-juegos201801\papuengine\gun.cpp(37): note: see reference to function template instantiation 'void std::vector<Bullet,std::allocator<_Ty>>::emplace_back<const glm::vec2&,glm::tvec2<float,0>,float&,int&>(const glm::vec2 &,glm::tvec2<float,0> &&,float &,int &)' being compiled
+          with
+          [
+              _Ty=Bullet
+          ]
+  c:\users\pcsilval\documents\fundamentos-teoria-juegos201801\papuengine\gun.cpp(34): note: see reference to function template instantiation 'void std::vector<Bullet,std::allocator<_Ty>>::emplace_back<const glm::vec2&,glm::tvec2<float,0>,float&,int&>(const glm::vec2 &,glm::tvec2<float,0> &&,float &,int &)' being compiled
+          with
+          [
+              _Ty=Bullet
+          ]
+  Bullet.cpp
+  Generating Code...
+  Compiling...
+  MainGame.cpp
+c:\users\pcsilval\documents\fundamentos-teoria-juegos201801\papuengine\maingame.cpp(31): error C2660: 'Player::init': function does not take 3 arguments
+c:\users\pcsilval\documents\fundamentos-teoria-juegos201801\papuengine\maingame.cpp(34): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\pcsilval\documents\fundamentos-teoria-juegos201801\papuengine\maingame.cpp(46): warning C4018: '<': signed/unsigned mismatch
+  main.cpp
+  Generating Code...

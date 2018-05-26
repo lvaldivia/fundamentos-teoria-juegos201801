@@ -32,6 +32,8 @@ public:
 	void draw(SpriteBacth& spritebatch);
 	bool collideWithLevel(
 			const std::vector<std::string>& levelData);
+
+	bool collideWithActor(Actor* actor);
 	virtual ~Actor();
 };
 
