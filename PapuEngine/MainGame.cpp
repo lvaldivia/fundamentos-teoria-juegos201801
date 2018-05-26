@@ -146,8 +146,18 @@ void MainGame::update() {
 		procesInput();
 		draw();
 		_camera.update();
-		_player->update(
-			_levels[_currenLevel]->getLevelData());
+		for (size_t i = 0; i < _humans.size(); i++) {
+			_humans[i]->
+					update(
+					_levels[_currenLevel]->getLevelData(),
+					_humans,_zombies);
+		}
+		for (size_t i = 0; i < _zombies.size(); i++) {
+			_zombies[i]->
+				update(
+					_levels[_currenLevel]->getLevelData(),
+					_humans, _zombies);
+		}
 		_camera.setPosition(_player->getPosition());
 		_time += 0.002f;
 	}
