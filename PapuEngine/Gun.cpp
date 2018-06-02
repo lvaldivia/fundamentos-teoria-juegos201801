@@ -2,6 +2,7 @@
 #include <random>
 #include <ctime>
 #include <glm\gtx\rotate_vector.hpp>
+#include <iostream>
 
 Gun::Gun(std::string name,
 	int fireRate, int bulletPerShot,
@@ -11,7 +12,8 @@ Gun::Gun(std::string name,
 	_bulletsPerShot(bulletPerShot),
 	_spread(spread),
 	_bulletDamage(bulletDamage),
-	_bulletSpeed(bulletSpeed)
+	_bulletSpeed(bulletSpeed),
+	_frameCounter(0)
 
 {
 }
@@ -35,6 +37,7 @@ void Gun::fire(const glm::vec2& direction,
 			glm::rotate(direction, 
 					randomRotate(randomEngine)),
 			_bulletDamage,_bulletSpeed);
+		std::cout << position.y << " " << position.x << std::endl;
 	}
 }
 
@@ -43,7 +46,9 @@ void Gun::update(bool isMouseDown,
 	const glm::vec2& direction,
 	std::vector<Bullet>& bullets) {
 	_frameCounter++;
+	
 	if (_frameCounter >= _fireRate && isMouseDown) {
+		
 		_frameCounter = 0;
 		fire(direction, position, bullets);
 	}

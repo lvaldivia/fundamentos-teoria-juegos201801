@@ -15,6 +15,7 @@ protected:
 	glm::vec2 _position;
 	float _speed;
 	Color color;
+	float _health;
 	void checkTilePosition(
 		const std::vector<std::string>& levelData,
 		std::vector<glm::vec2>& collideTilePosition,
@@ -23,6 +24,7 @@ protected:
 	void collideWithTile(glm::vec2 tilePos);
 public:
 	Actor();
+	bool applyDamage(float damage);
 	glm::vec2 getPosition()const { return _position; };
 	virtual void update(
 		const std::vector<std::string>& levelData,

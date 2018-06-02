@@ -29,6 +29,15 @@ void MainGame::initLevel() {
 	_player->init
 		(1.0f, _levels[_currenLevel]->getPlayerPosition(), 
 				&_inputManager,&_camera);
+
+
+	const float BULLET_SPEED = 20.0f;
+	_player->addGun(new Gun("Magnun",
+			10, 1, 5.0f, 30, BULLET_SPEED));
+	_player->addGun(new Gun("Shotgun",
+			30, 12, 20.0f, 4, BULLET_SPEED));
+	_player->addGun(new Gun("MPS",
+			2, 1, 10.0f, 20, BULLET_SPEED));
 	_humans.push_back(_player);
 	
 	std::mt19937 randomEngine(time(nullptr));
@@ -95,6 +104,10 @@ void MainGame::draw() {
 	{
 		_zombies[i]->draw(_spriteBacth);
 	}
+	for (size_t i = 0; i < _bullets.size();i++) {
+		_bullets[i].draw(_spriteBacth);
+	}
+
 	_spriteBacth.end();
 	_spriteBacth.renderBatch();
 
@@ -146,6 +159,7 @@ void MainGame::update() {
 		draw();
 		_camera.update();
 		updateElements();
+		updateBullets();
 		_camera.setPosition(_player->getPosition());
 		_time += 0.002f;
 	}
@@ -156,9 +170,80 @@ MainGame::MainGame():
 					  _height(600),
 					  _gameState(GameState::PLAY),
 					  _time(0),
-					  _player(nullptr)
+					  _player(nullptr),
+					  _zombiesKilled(0),
+					  _humansKilled(0)
 {
 	_camera.init(_witdh, _height);
+}
+
+void MainGame::updateBullets() {
+	for (size_t i = 0; i < _bullets.size();) {
+		if (_bullets[i].update(
+			_levels[_currenLevel]->getLevelData())) {
+			_bullets[i] = _bullets.back();
+			_bullets.pop_back();
+		}
+		else {
+			i++;
+		}
+	}
+
+	bool wasBulletRemoved;
+
+	for (size_t i = 0; i < _bullets.size(); i++)	{
+		wasBulletRemoved = false;
+		for (size_t j = 0; j < _zombies.size();)
+		{
+			if (_bullets[i].collideWithAgent(_zombies[j])) {
+				if (_zombies[j]->applyDamage(
+							_bullets[i].getDamge())) {
+					delete _zombies[j];
+					_zombies[j] = _zombies.back();
+					_zombies.pop_back();
+					_zombiesKilled++;
+
+				}
+				else {
+					j++;
+				}
+				_bullets[i] = _bullets.back();
+				_bullets.pop_back();
+				wasBulletRemoved = true;
+				i--;
+				break;
+			}
+			else {
+				j++;
+			}
+		}
+		if (!wasBulletRemoved) {
+			for (size_t j = 1; j < _humans.size();)
+			{
+				if (_bullets[i].
+						collideWithAgent(_humans[j])) {
+					if (_humans[j]->applyDamage(_bullets[j].getDamge())) {
+						delete _humans[j];
+						_humans[j] = _humans.back();
+						_humans.pop_back();
+						_humansKilled++;
+					}else{
+						j++;
+					}
+					_bullets[i] = _bullets.back();
+					_bullets.pop_back();
+					wasBulletRemoved = true;
+					i--;
+					break;
+				}
+				else {
+					j++;
+				}
+			}
+		
+		}
+	}
+
 }
 
 void MainGame::updateElements() {
@@ -168,6 +253,9 @@ void MainGame::updateElements() {
 				_levels[_currenLevel]->getLevelData(),
 				_humans, _zombies);
 	}
+	_player->update(
+		_levels[_currenLevel]->getLevelData(),
+		_humans, _zombies, _bullets);
 	for (size_t i = 0; i < _zombies.size(); i++) {
 		_zombies[i]->
 			update(
@@ -175,7 +263,7 @@ void MainGame::updateElements() {
 				_humans, _zombies);
 		for (size_t j = 0; j < _humans.size(); j++)
 		{
-			if (_zombies[i]->collideWithActor(_humans[j])) {
+			/*if (_zombies[i]->collideWithActor(_humans[j])) {
 				std::cout << _humans[j]->getPosition().x << "---" << _humans[j]->getPosition().y << endl;
 				_zombies.push_back(new Zombie());
 				_zombies.back()
@@ -184,7 +272,7 @@ void MainGame::updateElements() {
 				_humans[j] = _humans.back();
 				_humans.pop_back();
 
-			}
+			}*/
 		}
 	}
 

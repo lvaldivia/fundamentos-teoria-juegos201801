@@ -8,11 +8,11 @@ ScreenList::ScreenList(Game* game) :
 }
 
 IGameScreen* ScreenList::moveNext() {
-
+	return nullptr;
 }
 
 IGameScreen* ScreenList::movePreviuos() {
-
+	return nullptr;
 }
 
 void ScreenList::setScreen(int nextScreen) {

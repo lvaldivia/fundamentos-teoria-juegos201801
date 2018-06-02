@@ -6,6 +6,8 @@ class Human : public Actor
 
 protected:
 	glm::vec2 _direction;
+private:
+	int _frames;
 public:
 	Human();
 	~Human();

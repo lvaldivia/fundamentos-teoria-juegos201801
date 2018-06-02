@@ -1,5 +1,6 @@
 #include "Player.h"
 #include <SDL\SDL.h>
+#include <iostream>
 
 
 void Player::init(float speed, 
@@ -52,17 +53,18 @@ void Player::update(const std::vector<std::string>& levelData,
 		&& _guns.size() >= 2) {
 		_currentGun = 2;
 	}
+	glm::vec2 mouseCoords =
+		_camera->convertScreenToWorl(
+			_inputManager->getMouseCoords());
+	glm::vec2 centerPos = _position
+		* glm::vec2(AGENT_RADIUS);
+	glm::vec2 direction = glm::normalize(
 
+		mouseCoords - centerPos
+	);
 	if (_currentGun != -1) {
-		glm::vec2 mouseCoords =
-			_camera->convertScreenToWorl(
-				_inputManager->getMouseCoords());
-		glm::vec2 centerPos = _position 
-				* glm::vec2(AGENT_RADIUS);
-		glm::vec2 direction = glm::normalize(
-
-			mouseCoords - centerPos
-		);
+		
+		
 		_guns[_currentGun]->update(
 			_inputManager->isKeyPressed(SDL_BUTTON_LEFT),
 			centerPos, direction, bullets

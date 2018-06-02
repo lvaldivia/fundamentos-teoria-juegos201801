@@ -32,6 +32,18 @@ void Human::update(
 	static std::uniform_real_distribution<float>randRotate(
 		-40.0f, 40.0f);
 	_position += _direction * _speed;
+
+	if (_frames == 200) {
+		_direction = glm::rotate(
+			_direction,
+			randRotate(randomEngine));
+		_frames = 0;
+	}
+	else {
+		_frames++;
+	}
+
+
 	if (collideWithLevel(levelData)) {
 		_direction = glm::rotate(_direction, 
 				randRotate(randomEngine));

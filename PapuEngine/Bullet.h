@@ -20,8 +20,8 @@ public:
 		glm::vec2 direction, float damage,
 		float speed);
 	void draw(SpriteBacth& spritebatch);
-	void update(std::vector<Human*> & humans,
-		std::vector<Zombie*>& zombies);
+	bool update(
+		const std::vector<std::string>& levelData);
 
 	bool collideWithWorld(
 		const std::vector<std::string>&

@@ -1,5 +1,6 @@
 #include "Bullet.h"
 #include "ResourceManager.h"
+#include "Level.h"
 
 
 Bullet::Bullet(glm::vec2 position,
@@ -22,9 +23,11 @@ void Bullet::draw(SpriteBacth& spritebatch) {
 	ResourceManager::getTexture("Textures/circle.png").id,
 		0.0f, color);
 }
-void Bullet::update(std::vector<Human*> & humans,
-	std::vector<Zombie*>& zombies){
+bool Bullet::update(
+	const std::vector<std::string>& levelData){
 	_position += _direction * _speed;
+	
+	return collideWithWorld(levelData);
 }
 
 
@@ -43,9 +46,12 @@ bool Bullet::collideWithWorld(
 		>= levelData[0].size()
 		|| gridPosition.y < 0 || gridPosition.y >=
 		levelData[0].size()
-		
 		) {
+		return true;
 	}
+
+	return (levelData[gridPosition.y][gridPosition.y]
+		!= '.');
 
 }
 

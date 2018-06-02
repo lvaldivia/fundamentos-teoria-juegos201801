@@ -35,9 +35,9 @@ void Level::parseLevel() {
 	glm::vec4 uvRect(0.0f, 0.0f, 1.0f, 1.0f);
 	Color color;
 	color.set(255, 255, 255, 255);
-	for (int y = 0; y < _levelData.size(); y++)
+	for (size_t y = 0; y < _levelData.size(); y++)
 	{
-		for (int x = 0; x < _levelData[y].size(); x++)
+		for (size_t x = 0; x < _levelData[y].size(); x++)
 		{
 			char tile = _levelData[y][x];
 			glm::vec4 destRect(x*TILE_WIDTH, y*TILE_WIDTH,
