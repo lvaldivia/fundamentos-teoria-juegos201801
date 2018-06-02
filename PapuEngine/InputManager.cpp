@@ -6,12 +6,34 @@ void InputManager::pressKey(unsigned int keyCode) {
 
 void InputManager::releaseKey(unsigned int keyCode) {
 	_keyMap[keyCode] = false;
-
 }
-bool InputManager::isKeyPressed(unsigned int keyCode) {
+
+void InputManager::update() {
+	for (auto& it:_keyMap) {
+		_previousKey[it.first] = it.second;
+	}
+}
+
+bool InputManager::wasKeyDown(unsigned int keyCode) {
+	auto it = _previousKey.find(keyCode);
+	if (it != _previousKey.end()) {
+		return it->second;
+	}
+	return false;
+}
+
+bool InputManager::isKeyDown(unsigned int keyCode) {
 	auto it = _keyMap.find(keyCode);
 	if (it != _keyMap.end()) {
 		return it->second;
+	}
+	return false;
+}
+
+bool InputManager::isKeyPressed(unsigned int keyCode) {
+	if (isKeyDown(keyCode) == true 
+			&& wasKeyDown(keyCode) == false) {
+		return true;
 	}
 	return false;
 }

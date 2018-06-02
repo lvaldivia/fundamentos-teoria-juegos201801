@@ -1,4 +1,6 @@
 #pragma once
+#define SCREEN_INDEX_NO_SCREEN = -1;
+
 enum class ScreenState {
 	NONE,
 	RUNNING,
@@ -7,14 +9,18 @@ enum class ScreenState {
 	CHANGE_PREVIOUS
 
 };
+class IMainGame;
 class IGameScreen
 {
 protected: 
-	int _screenIndex = 1;
 	ScreenState _currentState 
 			= ScreenState::NONE;
+	IMainGame* _game = nullptr;
+	int _screenIndex = 1;
 
 public:
+	friend class ScreenList;
+	void setParentGame(IMainGame* game) { _game = game; };
 	virtual void checkInput() = 0;
 	virtual void initSystem() = 0;
 	virtual void build() = 0;
@@ -34,7 +40,12 @@ public:
 	void setRunning() {
 		_currentState = ScreenState::RUNNING;
 	}
-	IGameScreen();
-	~IGameScreen();
+
+	IGameScreen() {
+	
+	}
+
+	virtual ~IGameScreen() {
+	}
 };
 

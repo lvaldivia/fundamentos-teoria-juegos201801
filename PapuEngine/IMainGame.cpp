@@ -77,6 +77,17 @@ void IMainGame::update() {
 				break;
 		}
 	}
+	else {
+		exitGame();
+	}
+}
+
+void IMainGame::draw() {
+	glViewport(0, 0, _window.getScreenWidth(), _window.getScreenHeight());
+	if (_currentScreen && 
+			_currentScreen->getState() == ScreenState::RUNNING) {
+		_currentScreen->draw();
+	}
 }
 
 bool IMainGame::init() {

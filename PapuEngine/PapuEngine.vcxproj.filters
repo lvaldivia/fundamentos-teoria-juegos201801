@@ -93,9 +93,6 @@
     <ClCompile Include="ScreenList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="IGameScreen.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Bullet.cpp">
       <Filter>Source Files\Zombie</Filter>
     </ClCompile>

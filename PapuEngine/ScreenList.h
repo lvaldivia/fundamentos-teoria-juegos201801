@@ -1,22 +1,22 @@
 #pragma once
 #include <vector>
-class Game;
+class IMainGame;
 class IGameScreen;
 
 class ScreenList
 {
 public:
-	ScreenList(Game* game);
+	ScreenList(IMainGame* game);
 	~ScreenList();
 	IGameScreen* moveNext();
 	IGameScreen* movePreviuos();
 	void setScreen(int nextScreen);
 	void addScreen(IGameScreen* newScreen);
 	void destroy();
-	IGameScreen getCurrent();
+	IGameScreen* getCurrent();
 protected:
 	std::vector<IGameScreen*> _screens;
-	Game* _game;
+	IMainGame* _game=nullptr;
 	int _currentIndex = -1;
 };
 

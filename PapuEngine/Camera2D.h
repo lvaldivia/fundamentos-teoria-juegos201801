@@ -41,5 +41,8 @@ public:
 	float getScale() {
 		return _scale;
 	}
+
+	bool isBoxInView(const glm::vec2& position,
+						const glm::vec2& dimensions);
 };
 

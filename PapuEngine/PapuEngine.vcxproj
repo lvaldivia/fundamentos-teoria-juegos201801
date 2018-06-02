@@ -124,7 +124,6 @@
     <ClCompile Include="GLS_Program.cpp" />
     <ClCompile Include="Gun.cpp" />
     <ClCompile Include="Human.cpp" />
-    <ClCompile Include="IGameScreen.cpp" />
     <ClCompile Include="ImageLoader.cpp" />
     <ClCompile Include="IMainGame.cpp" />
     <ClCompile Include="InputManager.cpp" />
