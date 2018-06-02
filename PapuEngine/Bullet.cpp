@@ -27,6 +27,51 @@ void Bullet::update(std::vector<Human*> & humans,
 	_position += _direction * _speed;
 }
 
+
+bool Bullet::collideWithWorld(
+	const std::vector<std::string>&
+	levelData
+) {
+	glm::vec2 gridPosition;
+	gridPosition.x =
+
+		floor(_position.x / (float)TILE_WIDTH);
+	gridPosition.y = 
+		floor(_position.y / (float)TILE_WIDTH);
+
+	if (gridPosition.x < 0 || gridPosition.x
+		>= levelData[0].size()
+		|| gridPosition.y < 0 || gridPosition.y >=
+		levelData[0].size()
+		
+		) {
+	}
+
+}
+
+bool Bullet::collideWithAgent(Actor* actor) {
+	
+	const float MIN_DISTANCE =
+
+		AGENT_RADIUS + BULLET_RADIUS;
+
+	glm::vec2 centerPosA = _position;
+	glm::vec2 centerPosB =
+		actor->getPosition();
+
+	glm::vec2 distVec =
+		centerPosA - centerPosB;
+	float distance = glm::length(distVec);
+
+	float collisionDepth = MIN_DISTANCE -
+		distance;
+	if(collisionDepth>0)
+	{
+		return true;
+	}
+	return false;
+}
+
 Bullet::~Bullet()
 {
 }
