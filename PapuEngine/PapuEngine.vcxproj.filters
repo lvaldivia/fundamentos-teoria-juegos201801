@@ -96,10 +96,31 @@
     <ClCompile Include="Bullet.cpp">
       <Filter>Source Files\Zombie</Filter>
     </ClCompile>
-    <ClCompile Include="IMainGame.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Timing.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteFont.cpp">
+      <Filter>Source Files\Engine</Filter>
     </ClCompile>
     <ClCompile Include="AudioEngine.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="IMainGame.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Source.cpp">
+      <Filter>Header Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine.cpp">
+      <Filter>Header Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="App.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameScreen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuScreen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -170,22 +191,40 @@
     <ClInclude Include="Gun.h">
       <Filter>Header Files\Zombie</Filter>
     </ClInclude>
-    <ClInclude Include="Bullet.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ScreenIndices.h">
       <Filter>Header Files\Zombie</Filter>
     </ClInclude>
     <ClInclude Include="ScreenList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IGameScreen.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Timing.h">
+      <Filter>Header Files\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="IMainGame.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="SpriteFont.h">
+      <Filter>Header Files\Engine</Filter>
     </ClInclude>
     <ClInclude Include="AudioEngine.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="IGameScreen.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="IMainGame.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>Header Files\Zombie</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="App.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

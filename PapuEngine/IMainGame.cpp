@@ -21,7 +21,11 @@ void IMainGame::run() {
 }
 
 void IMainGame::exitGame() {
-
+	_currentScreen->onExit();
+	if (_mScreenList) {
+		_mScreenList->destroy();
+		_mScreenList.reset();
+	}
 
 }
 
