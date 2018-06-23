@@ -80,7 +80,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;glew32.lib;SDL2_ttf.lib;opengl32.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;CEGUIBase-0_d.lib;CEGUIOpenGLRenderer-0_d.lib;glew32.lib;opengl32.lib;Box2D.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -117,71 +117,54 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="Agent.cpp" />
     <ClCompile Include="App.cpp" />
-    <ClCompile Include="BackgroundMenu.cpp" />
-    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Background.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Camera2D.cpp" />
     <ClCompile Include="EnemyShip.cpp" />
     <ClCompile Include="Error.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="GameEngine.cpp" />
-    <ClCompile Include="GameScreen.cpp" />
+    <ClCompile Include="GameOverScreen.cpp" />
+    <ClCompile Include="GamePlayScreen.cpp" />
     <ClCompile Include="GLS_Program.cpp" />
-    <ClCompile Include="Gun.cpp" />
-    <ClCompile Include="Human.cpp" />
     <ClCompile Include="ImageLoader.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="IOManager.cpp" />
-    <ClCompile Include="Laser.cpp" />
-    <ClCompile Include="Level.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="MenuScreen.cpp" />
     <ClCompile Include="PapuEngine.cpp" />
     <ClCompile Include="picoPNG.cpp" />
-    <ClCompile Include="Player.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="ScreenList.cpp" />
     <ClCompile Include="Ship.cpp" />
-    <ClCompile Include="Source.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteBacth.cpp" />
     <ClCompile Include="SpriteFont.cpp" />
     <ClCompile Include="TextureCache.cpp" />
     <ClCompile Include="Timing.cpp" />
+    <ClCompile Include="Vullet.cpp" />
     <ClCompile Include="Window.cpp" />
-    <ClCompile Include="Zombie.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Actor.h" />
-    <ClInclude Include="App.h" />
-    <ClInclude Include="BackgroundMenu.h" />
-    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="Agent.h" />
+    <ClInclude Include="Background.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Camera2D.h" />
     <ClInclude Include="EnemyShip.h" />
     <ClInclude Include="Error.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="GameEngine.h" />
-    <ClInclude Include="GameScreen.h" />
+    <ClInclude Include="GameOverScreen.h" />
+    <ClInclude Include="gameplayscreen.h" />
     <ClInclude Include="GLS_Program.h" />
     <ClInclude Include="GLTexture.h" />
-    <ClInclude Include="Gun.h" />
     <ClInclude Include="IGameScreen.h" />
-    <ClInclude Include="Laser.h" />
-    <ClInclude Include="MenuScreen.h" />
-    <ClInclude Include="ScreenIndices.h" />
-    <ClInclude Include="Human.h" />
     <ClInclude Include="ImageLoader.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="IOManager.h" />
-    <ClInclude Include="Level.h" />
-    <ClInclude Include="MainGame.h" />
+    <ClInclude Include="MenuScreen.h" />
     <ClInclude Include="PapuEngine.h" />
     <ClInclude Include="picoPNG.h" />
-    <ClInclude Include="Player.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="ScreenList.h" />
     <ClInclude Include="Ship.h" />
@@ -191,8 +174,8 @@
     <ClInclude Include="TextureCache.h" />
     <ClInclude Include="Timing.h" />
     <ClInclude Include="Vertex.h" />
+    <ClInclude Include="Vullet.h" />
     <ClInclude Include="Window.h" />
-    <ClInclude Include="Zombie.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

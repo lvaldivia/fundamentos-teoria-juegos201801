@@ -20,33 +20,27 @@ glm::vec2 Camera2D::convertScreenToWorl(glm::vec2 screenScoords) {
 	return screenScoords;
 }
 
+bool Camera2D::isBoxInView(const glm::vec2& position, const glm::vec2& dimension) {
+	glm::vec2 scaleScreenDimension = glm::vec2(_screenWidth, _screenHeight) / _scale;
+	const float MIN_DISTANCE_X = dimension.x / 2.0f + scaleScreenDimension.x;
+	const float MIN_DISTANCE_Y = dimension.y / 2.0f + scaleScreenDimension.y;
+
+	glm::vec2 centerPos = _position + dimension / 2.0f;
+	glm::vec2 centerCameraPos = _position + glm::vec2(scaleScreenDimension.x / 2.0f, 
+														scaleScreenDimension.y / 2.0f);
+	glm::vec2 distVec = centerPos - centerCameraPos;
+	float xdepth = MIN_DISTANCE_X - abs(distVec.x);
+	float ydepth = MIN_DISTANCE_Y - abs(distVec.y);
+
+	if (xdepth > 0 || ydepth > 0) {
+		return true;
+	}
+}
+
 void Camera2D::init(int screenWidth, int screenHeight) {
 	_screenWidth = screenWidth;
 	_screenHeight = screenHeight;
 	_orthoMatrix = glm::ortho(0.0f, (float)_screenWidth, 0.0f, (float)_screenHeight);
-}
-
-bool Camera2D::isBoxInView(const glm::vec2& position,
-	const glm::vec2& dimensions) {
-	glm::vec2 scaledScreenDimensions =
-		glm::vec2(_screenWidth, _screenHeight) / _scale;
-	const float MIN_DISTANCE_X = dimensions.x / 2.0f 
-					+ scaledScreenDimensions.x / 2.0f;
-	const float MIN_DISTANCE_Y = dimensions.y / 2.0f +
-		scaledScreenDimensions.y / 2.0f;
-
-	glm::vec2 centerPos = position + dimensions / 2.0f;
-	glm::vec2 centerCameraPos = _position;
-
-	glm::vec2 distVec = centerPos - centerCameraPos;
-	float xDepth = MIN_DISTANCE_X - abs(distVec.x);
-	float yDepth = MIN_DISTANCE_Y - abs(distVec.y);
-
-	if (xDepth > 0 && yDepth > 0) {
-		return true;
-	}
-	return false;
-
 }
 
 void Camera2D::update() {

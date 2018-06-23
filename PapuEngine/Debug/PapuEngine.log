@@ -1,67 +1,44 @@
-﻿  Zombie.cpp
+﻿  Window.cpp
+  Vullet.cpp
+  Timing.cpp
+c:\users\luis\documents\funda\fundamentos-teoria-juegos201801\papuengine\timing.cpp(22): warning C4244: 'argument': conversion from 'float' to 'Uint32', possible loss of data
+  TextureCache.cpp
+  SpriteFont.cpp
+  SpriteBacth.cpp
+c:\users\luis\documents\funda\fundamentos-teoria-juegos201801\papuengine\spritebacth.cpp(45): warning C4018: '<': signed/unsigned mismatch
+c:\users\luis\documents\funda\fundamentos-teoria-juegos201801\papuengine\spritebacth.cpp(73): warning C4018: '<': signed/unsigned mismatch
+  Sprite.cpp
   Ship.cpp
-  Player.cpp
-  Human.cpp
-c:\users\profesores\documents\fundamentos-teoria-juegos201801\papuengine\human.cpp(14): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\users\profesores\documents\fundamentos-teoria-juegos201801\papuengine\human.cpp(31): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  Gun.cpp
-c:\users\profesores\documents\fundamentos-teoria-juegos201801\papuengine\gun.cpp(18): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\profesores\documents\fundamentos-teoria-juegos201801\papuengine\gun.cpp(31): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\users\profesores\documents\fundamentos-teoria-juegos201801\papuengine\gun.cpp(34): warning C4018: '<': signed/unsigned mismatch
-c:\program files (x86)\microsoft visual studio 14.0\vc\include\xmemory0(737): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  c:\program files (x86)\microsoft visual studio 14.0\vc\include\xmemory0(857): note: see reference to function template instantiation 'void std::allocator<_Ty>::construct<_Objty,const glm::vec2&,glm::tvec2<float,0>,float&,int&>(_Objty *,const glm::vec2 &,glm::tvec2<float,0> &&,float &,int &)' being compiled
-          with
-          [
-              _Ty=Bullet,
-              _Objty=Bullet
-          ]
-  c:\program files (x86)\microsoft visual studio 14.0\vc\include\xmemory0(857): note: see reference to function template instantiation 'void std::allocator<_Ty>::construct<_Objty,const glm::vec2&,glm::tvec2<float,0>,float&,int&>(_Objty *,const glm::vec2 &,glm::tvec2<float,0> &&,float &,int &)' being compiled
-          with
-          [
-              _Ty=Bullet,
-              _Objty=Bullet
-          ]
-  c:\program files (x86)\microsoft visual studio 14.0\vc\include\xmemory0(996): note: see reference to function template instantiation 'void std::allocator_traits<_Alloc>::construct<_Ty,const glm::vec2&,glm::tvec2<float,0>,float&,int&>(std::allocator<_Ty> &,_Objty *,const glm::vec2 &,glm::tvec2<float,0> &&,float &,int &)' being compiled
-          with
-          [
-              _Alloc=std::allocator<Bullet>,
-              _Ty=Bullet,
-              _Objty=Bullet
-          ]
-  c:\program files (x86)\microsoft visual studio 14.0\vc\include\xmemory0(995): note: see reference to function template instantiation 'void std::allocator_traits<_Alloc>::construct<_Ty,const glm::vec2&,glm::tvec2<float,0>,float&,int&>(std::allocator<_Ty> &,_Objty *,const glm::vec2 &,glm::tvec2<float,0> &&,float &,int &)' being compiled
-          with
-          [
-              _Alloc=std::allocator<Bullet>,
-              _Ty=Bullet,
-              _Objty=Bullet
-          ]
-  c:\program files (x86)\microsoft visual studio 14.0\vc\include\vector(930): note: see reference to function template instantiation 'void std::_Wrap_alloc<std::allocator<_Ty>>::construct<_Ty,const glm::vec2&,glm::tvec2<float,0>,float&,int&>(_Ty *,const glm::vec2 &,glm::tvec2<float,0> &&,float &,int &)' being compiled
-          with
-          [
-              _Ty=Bullet
-          ]
-  c:\program files (x86)\microsoft visual studio 14.0\vc\include\vector(929): note: see reference to function template instantiation 'void std::_Wrap_alloc<std::allocator<_Ty>>::construct<_Ty,const glm::vec2&,glm::tvec2<float,0>,float&,int&>(_Ty *,const glm::vec2 &,glm::tvec2<float,0> &&,float &,int &)' being compiled
-          with
-          [
-              _Ty=Bullet
-          ]
-  c:\users\profesores\documents\fundamentos-teoria-juegos201801\papuengine\gun.cpp(39): note: see reference to function template instantiation 'void std::vector<Bullet,std::allocator<_Ty>>::emplace_back<const glm::vec2&,glm::tvec2<float,0>,float&,int&>(const glm::vec2 &,glm::tvec2<float,0> &&,float &,int &)' being compiled
-          with
-          [
-              _Ty=Bullet
-          ]
-  c:\users\profesores\documents\fundamentos-teoria-juegos201801\papuengine\gun.cpp(36): note: see reference to function template instantiation 'void std::vector<Bullet,std::allocator<_Ty>>::emplace_back<const glm::vec2&,glm::tvec2<float,0>,float&,int&>(const glm::vec2 &,glm::tvec2<float,0> &&,float &,int &)' being compiled
-          with
-          [
-              _Ty=Bullet
-          ]
-  Bullet.cpp
-c:\users\profesores\documents\fundamentos-teoria-juegos201801\papuengine\bullet.cpp(53): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-  Actor.cpp
-c:\users\profesores\documents\fundamentos-teoria-juegos201801\papuengine\actor.cpp(51): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-  Generating Code...
-  Skipping... (no relevant changes detected)
+  ScreenList.cpp
+  ResourceManager.cpp
+  picoPNG.cpp
+  PapuEngine.cpp
+  MenuScreen.cpp
   main.cpp
-  MainGame.cpp
-  PapuEngine.vcxproj -> C:\Users\Profesores\Documents\fundamentos-teoria-juegos201801\Debug\PapuEngine.exe
-  PapuEngine.vcxproj -> C:\Users\Profesores\Documents\fundamentos-teoria-juegos201801\Debug\PapuEngine.pdb (Partial PDB)
+  IOManager.cpp
+c:\users\luis\documents\funda\fundamentos-teoria-juegos201801\papuengine\iomanager.cpp(15): warning C4244: 'initializing': conversion from 'std::streamoff' to 'int', possible loss of data
+c:\users\luis\documents\funda\fundamentos-teoria-juegos201801\papuengine\iomanager.cpp(18): warning C4244: '-=': conversion from 'std::streamoff' to 'int', possible loss of data
+  InputManager.cpp
+  ImageLoader.cpp
+c:\users\luis\documents\funda\fundamentos-teoria-juegos201801\papuengine\imageloader.cpp(36): warning C4244: '=': conversion from 'unsigned long' to 'float', possible loss of data
+c:\users\luis\documents\funda\fundamentos-teoria-juegos201801\papuengine\imageloader.cpp(37): warning C4244: '=': conversion from 'unsigned long' to 'float', possible loss of data
+  GLS_Program.cpp
+  GamePlayScreen.cpp
+c:\users\luis\documents\funda\fundamentos-teoria-juegos201801\papuengine\gameplayscreen.cpp(97): warning C4244: 'initializing': conversion from 'Uint32' to 'float', possible loss of data
+c:\users\luis\documents\funda\fundamentos-teoria-juegos201801\papuengine\gameplayscreen.cpp(98): warning C4244: 'initializing': conversion from 'Uint32' to 'float', possible loss of data
+c:\users\luis\documents\funda\fundamentos-teoria-juegos201801\papuengine\gameplayscreen.cpp(107): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  GameOverScreen.cpp
+  Generating Code...
+  Compiling...
+  Game.cpp
+  Error.cpp
+  EnemyShip.cpp
+  Camera2D.cpp
+  Button.cpp
+  Background.cpp
+  App.cpp
+  Agent.cpp
+  Generating Code...
+c:\users\luis\documents\funda\fundamentos-teoria-juegos201801\papuengine\camera2d.cpp(38): warning C4715: 'Camera2D::isBoxInView': not all control paths return a value
+  PapuEngine.vcxproj -> C:\Users\Luis\Documents\funda\fundamentos-teoria-juegos201801\Debug\PapuEngine.exe
+  PapuEngine.vcxproj -> C:\Users\Luis\Documents\funda\fundamentos-teoria-juegos201801\Debug\PapuEngine.pdb (Partial PDB)

@@ -6,22 +6,8 @@ void InputManager::pressKey(unsigned int keyCode) {
 
 void InputManager::releaseKey(unsigned int keyCode) {
 	_keyMap[keyCode] = false;
-}
 
-void InputManager::update() {
-	for (auto& it:_keyMap) {
-		_previousKey[it.first] = it.second;
-	}
 }
-
-bool InputManager::wasKeyDown(unsigned int keyCode) {
-	auto it = _previousKey.find(keyCode);
-	if (it != _previousKey.end()) {
-		return it->second;
-	}
-	return false;
-}
-
 bool InputManager::isKeyDown(unsigned int keyCode) {
 	auto it = _keyMap.find(keyCode);
 	if (it != _keyMap.end()) {
@@ -30,10 +16,27 @@ bool InputManager::isKeyDown(unsigned int keyCode) {
 	return false;
 }
 
+void InputManager::update() {
+	for (auto& it : _keyMap) {
+		_previusKeyMap[it.first] = it.second;
+	}
+	/*for (auto it = _keyMap.begin(); it != _keyMap.end(); it++) {
+		_previusKeyMap[it->first] = it->second;
+	}*/
+}
+
+
 bool InputManager::isKeyPressed(unsigned int keyCode) {
-	if (isKeyDown(keyCode) == true 
-			&& wasKeyDown(keyCode) == false) {
+	if (isKeyDown(keyCode) && !wasKeyDown(keyCode)) {
 		return true;
+	}
+	return false;
+}
+
+bool InputManager::wasKeyDown(unsigned int keyCode) {
+	auto it = _previusKeyMap.find(keyCode);
+	if (it != _previusKeyMap.end()) {
+		return it->second;
 	}
 	return false;
 }

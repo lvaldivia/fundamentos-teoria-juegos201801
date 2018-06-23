@@ -1,11 +1,16 @@
 #include "MenuScreen.h"
+#include "ScreenIndices.h"
 #include "Game.h"
+#include <iostream>
 
-
-
-MenuScreen::MenuScreen(Window *window):_window(window)
+MenuScreen::MenuScreen(Window* window) :
+	_window(window), btnGameClicked(false)
 {
-	_screenIndex = 0;
+	_screenIndex = SCREEN_INDEX_MENU;
+}
+
+void MenuScreen::initGUI() {
+
 }
 
 void MenuScreen::initSystem() {
@@ -17,36 +22,35 @@ void MenuScreen::initSystem() {
 	_program.linkShader();
 }
 
-void MenuScreen::build() {
+MenuScreen::~MenuScreen()
+{
 }
 
+void MenuScreen::build() 
+{
+}
 
 void MenuScreen::destroy() {
-
+	delete _background;
+	delete _button;
 }
 
 void MenuScreen::onExit() {
-}
 
-void MenuScreen::checkInput() {
-	SDL_Event event;
-	while (SDL_PollEvent(&event)) {
-		_game->onSDLEvent(event);
-	}
 }
-
 
 void MenuScreen::onEntry() {
 	initSystem();
 	_camera2D.init(_window->getScreenWidth(), _window->getScreenHeight());
 	_camera2D.setPosition(glm::vec2(_window->getScreenWidth() / 2.0f, _window->getScreenHeight() / 2.0f));
-	_spritebatch.init();
-	_background = new BackgroundMenu("Textures/fondos/menu.png");
+	_spriteBacth.init();
+	_background = new Background("Textures/fondos/menu.png");
+	_button = new Button("Textures/naves/menu_button.png");
 }
 
-void MenuScreen::update() 
-{
+void MenuScreen::update() {
 	_camera2D.update();
+	_elapsed += 0.1f;
 	checkInput();
 }
 
@@ -54,14 +58,7 @@ void MenuScreen::draw() {
 	glClearDepth(1.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	_program.use();
-
 	glActiveTexture(GL_TEXTURE0);
-	//glBindTexture(GL_TEXTURE_2D, _texture.id);
-
-	/*GLuint timeLocation =
-	_program.getUniformLocation("time");
-
-	glUniform1f(timeLocation,_time);*/
 
 	GLuint pLocation =
 		_program.getUniformLocation("P");
@@ -72,24 +69,37 @@ void MenuScreen::draw() {
 	GLuint imageLocation = _program.getUniformLocation("myImage");
 	glUniform1i(imageLocation, 0);
 
-	_spritebatch.begin();
-	_background->draw(_spritebatch);
-	_spritebatch.end();
-	_spritebatch.renderBatch();
+	_spriteBacth.begin();
+	_background->draw(_spriteBacth);
+	_button->draw(_spriteBacth);
+
+	_spriteBacth.end();
+	_spriteBacth.renderBatch();
+
+
 	glBindTexture(GL_TEXTURE_2D, 0);
 	_program.unuse();
-	_window->swapBuffer();
-}
-
-int MenuScreen::getNextScreen() const {
-	return 2;
-}
-
-int MenuScreen::getPrevScreen() const {
-	return -1;
 }
 
 
-MenuScreen::~MenuScreen()
-{
+void  MenuScreen::drawHUD() {
+
 }
+
+
+int MenuScreen::getNextScreen()const {
+	return SCREEN_INDEX_GAMEPLAY;
+}
+
+int MenuScreen::getPreviousScreen() const{
+	return SCREEN_INDEX_NO_SCREEN;
+}
+
+void MenuScreen::checkInput() {
+	SDL_Event evnt;
+	while (SDL_PollEvent(&evnt)) {
+		_game->onSDLEvent(evnt);
+	}
+}
+
+

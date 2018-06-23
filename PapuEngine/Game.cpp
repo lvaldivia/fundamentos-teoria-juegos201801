@@ -1,20 +1,22 @@
 #include "Game.h"
+#include "PapuEngine.h"
 #include "ScreenList.h"
-#include "Timing.h"
 #include "IGameScreen.h"
+#include "Timing.h"
 #include <iostream>
-#include "GameEngine.h"
-
 
 Game::Game()
 {
-	_screenList = std::make_unique<ScreenList>(this);
+	_screenList = 
+			std::make_unique<ScreenList>(this);
 }
 
 bool Game::init() {
-	MyEngine::init();
-	SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
+	Papu::init();
+	SDL_GL_SetAttribute(
+			SDL_GL_ACCELERATED_VISUAL, 1);
 	initSystems();
+	onInit();
 	addScreens();
 	_currentScreen = _screenList->getCurrent();
 	_currentScreen->onEntry();
@@ -23,39 +25,46 @@ bool Game::init() {
 }
 
 void Game::draw() {
-	glViewport(0, 0, _window.getScreenWidth(), _window.getScreenHeight());
-	if (_currentScreen && _currentScreen->getState() == ScreenState::RUNNING) {
+	glViewport(0, 0, _window.getScreenWidth(),
+					_window.getScreenHeight());
+	if (_currentScreen 
+			&& _currentScreen->getState()
+				== ScreenState::RUNNING) {
 		_currentScreen->draw();
 	}
 }
+bool Game::initSystems() {
+	_window.create("Plataformer", 760, 500, 0);
+	return true;
+}
 
-void Game::onSDLEvent(SDL_Event& event) {
-	switch (event.type)
-	{
+void Game::onSDLEvent(SDL_Event& evnt) {
+	switch (evnt.type) {
 	case SDL_QUIT:
 		break;
+	case SDL_MOUSEMOTION:
+		_inputManager.setMouseCoords((float)evnt.motion.x, (float)evnt.motion.y);
+		break;
 	case SDL_KEYDOWN:
-		_inputManager.pressKey(event.key.keysym.sym);
+		_inputManager.pressKey(evnt.key.keysym.sym);
 		break;
 	case SDL_KEYUP:
-		_inputManager.releaseKey(event.key.keysym.sym);
+		_inputManager.releaseKey(evnt.key.keysym.sym);
 		break;
 	case SDL_MOUSEBUTTONDOWN:
-		_inputManager.pressKey(event.button.button);
+		_inputManager.pressKey(evnt.button.button);
 		break;
 	case SDL_MOUSEBUTTONUP:
-		_inputManager.releaseKey(event.button.button);
-		break;
-	default:
+		_inputManager.releaseKey(evnt.button.button);
 		break;
 	}
 }
 
 void Game::run() {
-	if (!init())return;
+	if (!init()) return;
 	_isRunning = true;
 	FpsLimiter fpsLimiter;
-	fpsLimiter.setMaxFps(60.0f);
+	fpsLimiter.setMaxFPS(60.0f);
 
 	while (_isRunning) {
 		fpsLimiter.begin();
@@ -64,11 +73,9 @@ void Game::run() {
 		draw();
 		_window.swapBuffer();
 		_fps = fpsLimiter.end();
+		//cout << _fps << endl;
+		
 	}
-}
-
-void Game::onExit() {
-	
 }
 
 void Game::exit() {
@@ -84,45 +91,42 @@ void Game::update() {
 	if (_currentScreen) {
 		switch (_currentScreen->getState())
 		{
-		case ScreenState::RUNNING:
-			_currentScreen->update();
-			break;
-		case ScreenState::CHANGE_NEXT:
-			_currentScreen->onExit();
-			if (_currentScreen->getIndex() == 2){
-				_screenList->destroy();
-				addScreens();
-				_currentScreen = _screenList->getCurrent();
-			}
-			else {
-				_currentScreen = _screenList->moveNext();
-			}
-			if (_currentScreen) {
-				_currentScreen->setRunning();
-				_currentScreen->onEntry();
-			}
-			break;
-		case ScreenState::CHANGE_PREVIOUS:
-			_currentScreen->onExit();
-			_currentScreen = _screenList->movePreviuos();
-			if (_currentScreen) {
-				_currentScreen->setRunning();
-				_currentScreen->onEntry();
-			}
-			break;
-		case ScreenState::EXIT_APPLICATION:
-			exit();
-			break;
+			case ScreenState::RUNNING:
+				_currentScreen->update();
+				break;
+			case ScreenState::CHANGE_NEXT:
+				_currentScreen->onExit();
+				if (_currentScreen->getIndex() == 2) {
+					_screenList->destroy();
+					addScreens();
+					_currentScreen = _screenList->getCurrent();
+				}
+				else {
+					_currentScreen =
+						_screenList->moveNext();
+				}
+				if (_currentScreen) {
+					_currentScreen->setRunning();
+					_currentScreen->onEntry();
+				}
+				break;
+			case ScreenState::CHANGE_PREVIOUS:
+				_currentScreen->onExit();
+				_currentScreen =
+					_screenList->movePrevious();
+				if (_currentScreen) {
+					_currentScreen->setRunning();
+					_currentScreen->onEntry();
+				}
+				break;
+			case ScreenState::EXIT_APPLICATION:
+				exit();
+				break;
+			default:
+				break;
 		}
-
 		
 	}
-}
-
-
-bool Game::initSystems() {
-	_window.create("Demo Juego 1", 760, 500, 0);
-	return true;
 }
 
 

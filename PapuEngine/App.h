@@ -1,21 +1,23 @@
 #pragma once
-#include "Game.h"
 #include <algorithm>
-
-#include "GameScreen.h"
+#include "Game.h"
+#include "GamePlayScreen.h"
 #include "MenuScreen.h"
-
+#include "GameOverScreen.h"
 
 class App : public Game
 {
 public:
 	App();
+	~App();
 	virtual void onInit() override;
 	virtual void addScreens() override;
 	virtual void onExit() override;
-	~App();
 private:
-	std::unique_ptr<MenuScreen> _menuScreen = nullptr;
-	std::unique_ptr<GameScreen> _gameScreen = nullptr;
+	std::unique_ptr<MenuScreen>
+					_menuScreen = nullptr;
+	std::unique_ptr<GamePlayScreen> _gamePlayScreen = nullptr;
+	std::unique_ptr<GameOverScreen> _gameOverScreen = nullptr;
+
 };
 
