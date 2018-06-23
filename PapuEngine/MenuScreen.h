@@ -11,6 +11,7 @@
 class MenuScreen : public IGameScreen
 {
 private:
+	bool _startClicked = false;
 	Window* _window = nullptr;
 	bool btnGameClicked;
 	GLS_Program _program;
@@ -20,8 +21,7 @@ private:
 	Button* _button;
 	Camera2D _hudCamera;
 	SpriteBacth _hudBatch;
-	SpriteFont* _spriteFont;
-	SpriteFont*_fontdetalles;
+	SpriteFont* _welcomeText;
 	float _elapsed;
 	void drawHUD();
 

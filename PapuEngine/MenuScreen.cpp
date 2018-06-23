@@ -46,11 +46,21 @@ void MenuScreen::onEntry() {
 	_spriteBacth.init();
 	_background = new Background("Textures/fondos/menu.png");
 	_button = new Button("Textures/naves/menu_button.png");
+	_welcomeText = new SpriteFont("Fonts/arial.ttf", 64);
 }
 
 void MenuScreen::update() {
 	_camera2D.update();
 	_elapsed += 0.1f;
+	if (!_startClicked) {
+		if (_button->clicked(_game->_inputManager.getMouseCoords())
+				&& _game->_inputManager.isKeyDown(SDL_BUTTON_LEFT)) {
+			std::cout << "Click en el botón" << std::endl;
+			_startClicked = true;
+			_currentState = ScreenState::CHANGE_NEXT;
+		}
+	}
+	
 	checkInput();
 }
 
@@ -68,11 +78,24 @@ void MenuScreen::draw() {
 
 	GLuint imageLocation = _program.getUniformLocation("myImage");
 	glUniform1i(imageLocation, 0);
-
+	
 	_spriteBacth.begin();
 	_background->draw(_spriteBacth);
 	_button->draw(_spriteBacth);
+	
+	_spriteBacth.end();
+	_spriteBacth.renderBatch();
 
+	char buffer[256];
+	_spriteBacth.begin();
+	sprintf_s(buffer, "HOLA");
+	_welcomeText->draw(_spriteBacth, buffer, glm::vec2(300, 100),
+		glm::vec2(0, 5), 0.0f,
+		ColorRGBA(255, 255, 255, 255));
+	sprintf_s(buffer, "Q tal");
+	_welcomeText->draw(_spriteBacth, buffer, glm::vec2(0, 0),
+		glm::vec2(0, 5), 0.0f,
+		ColorRGBA(120, 31, 25, 255));
 	_spriteBacth.end();
 	_spriteBacth.renderBatch();
 

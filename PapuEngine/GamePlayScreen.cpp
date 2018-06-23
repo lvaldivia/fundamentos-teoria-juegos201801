@@ -37,16 +37,13 @@ void GamePlayScreen::onEntry() {
 	initSystem();
 	_spriteBatch.init();
 	_hudBatch.init();
-	initGUI();
 	_camera2d.init(_window->getScreenWidth(),
 		_window->getScreenHeight());
 	_camera2d.setPosition(
 		glm::vec2(_window->getScreenWidth() / 2.0f,
 			_window->getScreenHeight() / 2.0f));
 	
-	_background = new Background("Textures/naves/game.png");
-	_ship.push_back(new Ship(50, 40
-		, glm::vec2(_window->getScreenWidth() / 2.0f, 100), "Textures/naves/Player.png", &_game->_inputManager));
+	_background = new Background("Textures/fondos/gameover.png");
 
 	_hudCamera.init(_window->getScreenWidth(),
 		_window->getScreenHeight());
@@ -82,6 +79,7 @@ void GamePlayScreen::draw() {
 	GLuint imageLocation = _program.getUniformLocation("myImage");
 	glUniform1i(imageLocation, 0);
 	_spriteBatch.begin();
+	_background->draw(_spriteBatch);
 	_spriteBatch.end();
 	_spriteBatch.renderBatch();
 	glActiveTexture(GL_TEXTURE0);
