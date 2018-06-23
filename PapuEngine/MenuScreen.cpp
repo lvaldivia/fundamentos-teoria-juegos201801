@@ -44,7 +44,9 @@ void MenuScreen::onEntry() {
 	_background = new BackgroundMenu("Textures/fondos/menu.png");
 }
 
-void MenuScreen::update() {
+void MenuScreen::update() 
+{
+	_camera2D.update();
 	checkInput();
 }
 
@@ -76,6 +78,7 @@ void MenuScreen::draw() {
 	_spritebatch.renderBatch();
 	glBindTexture(GL_TEXTURE_2D, 0);
 	_program.unuse();
+	_window->swapBuffer();
 }
 
 int MenuScreen::getNextScreen() const {
@@ -85,8 +88,6 @@ int MenuScreen::getNextScreen() const {
 int MenuScreen::getPrevScreen() const {
 	return -1;
 }
-
-
 
 
 MenuScreen::~MenuScreen()

@@ -2,6 +2,13 @@
 #include "IGameScreen.h"
 #include "Window.h"
 #include "SpriteBacth.h"
+#include "Camera2D.h"
+#include "Window.h"
+#include "SpriteFont.h"
+#include "BackgroundMenu.h"
+#include <iostream>
+#include "GLS_Program.h"
+#include <vector>
 
 class GameScreen : public IGameScreen
 {

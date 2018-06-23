@@ -8,6 +8,16 @@ Actor::Actor()
 
 }
 
+Actor::Actor(float agent_width, float agent_height,
+	glm::vec2 position, std::string texturePath):
+	_agent_width(agent_width),_agent_height(agent_height),
+	_position(position), _texturePath(texturePath),
+		_agent_radius(agent_width/2)
+
+{
+	
+}
+
 bool Actor::applyDamage(float damage) {
 	_health -= damage;
 	if (_health <= 0) {
@@ -18,9 +28,9 @@ bool Actor::applyDamage(float damage) {
 }
 
 void Actor::draw(SpriteBacth& spritebatch) {
-	static int textureID = ResourceManager::getTexture("Images/circle.png").id;
+	static int textureID = ResourceManager::getTexture(_texturePath).id;
 	const glm::vec4 uvRect(0.0f, 0.0f, 1.0f, 1.0f);
-	glm::vec4 destRect(_position.x, _position.y, AGENT_WIDTH, AGENT_WIDTH);
+	glm::vec4 destRect(_position.x, _position.y, _agent_width,_agent_height);
 	spritebatch.draw(destRect, uvRect, textureID, 0.0f, color);
 }
 
@@ -110,10 +120,10 @@ bool Actor::collideWithLevel(
 
 bool Actor::collideWithActor(Actor* actor) {
 	glm::vec2 centerPosA = _position 
-				+ glm::vec2(AGENT_WIDTH / 2);
+				+ glm::vec2(_agent_radius);
 
 	glm::vec2 centerPosB = actor->getPosition() +
-				glm::vec2(AGENT_WIDTH / 2);
+				glm::vec2(_agent_radius);
 	glm::vec2 distance = centerPosA - centerPosB;
 	const float MIN_DISTANCE = AGENT_RADIUS / 2;
 	float dist = glm::length(distance);

@@ -12,7 +12,11 @@ const float AGENT_RADIUS = AGENT_WIDTH / 2.0f;
 class Actor
 {
 protected:
+	float _agent_width;
+	float _agent_height;
+	float _agent_radius;
 	glm::vec2 _position;
+	std::string _texturePath;
 	float _speed;
 	Color color;
 	float _health;
@@ -23,6 +27,8 @@ protected:
 
 	void collideWithTile(glm::vec2 tilePos);
 public:
+	Actor(float agent_width, float agent_height,
+		glm::vec2 position, std::string texturePath);
 	Actor();
 	bool applyDamage(float damage);
 	glm::vec2 getPosition()const { return _position; };
