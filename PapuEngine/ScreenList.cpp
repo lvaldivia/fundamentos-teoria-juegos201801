@@ -3,7 +3,7 @@
 
 
 
-ScreenList::ScreenList(IMainGame* game):
+ScreenList::ScreenList(Game* game):
 	_game(game)
 {
 }

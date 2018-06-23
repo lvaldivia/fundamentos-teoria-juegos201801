@@ -9,18 +9,18 @@ enum class ScreenState {
 	CHANGE_PREVIOUS
 
 };
-class IMainGame;
+class Game;
 class IGameScreen
 {
 protected: 
 	ScreenState _currentState 
 			= ScreenState::NONE;
-	IMainGame* _game = nullptr;
+	Game* _game = nullptr;
 	int _screenIndex = 1;
 
 public:
 	friend class ScreenList;
-	void setParentGame(IMainGame* game) { _game = game; };
+	void setParentGame(Game* game) { _game = game; };
 	virtual void checkInput() = 0;
 	virtual void initSystem() = 0;
 	virtual void build() = 0;

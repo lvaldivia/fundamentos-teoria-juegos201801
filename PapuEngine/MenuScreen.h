@@ -3,11 +3,19 @@
 #include "IGameScreen.h"
 #include "Window.h"
 #include "SpriteBacth.h"
+#include "GLS_Program.h"
+#include "Camera2D.h"
+#include "BackgroundMenu.h"
+
 class MenuScreen : public IGameScreen
 {
 private:
 	Window* _window = nullptr;
 	SpriteBacth _spritebatch;
+	GLS_Program _program;
+	Camera2D _camera2D;
+	float _elapsed;
+	BackgroundMenu* _background;
 public:
 
 	MenuScreen(Window* window);

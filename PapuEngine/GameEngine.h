@@ -1,2 +1,4 @@
 #pragma once
-extern int init();
+namespace MyEngine {
+	extern int init();
+}

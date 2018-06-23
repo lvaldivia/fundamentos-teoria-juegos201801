@@ -1,12 +1,12 @@
 #pragma once
 #include <vector>
-class IMainGame;
+class Game;
 class IGameScreen;
 
 class ScreenList
 {
 public:
-	ScreenList(IMainGame* game);
+	ScreenList(Game* game);
 	~ScreenList();
 	IGameScreen* moveNext();
 	IGameScreen* movePreviuos();
@@ -16,7 +16,7 @@ public:
 	IGameScreen* getCurrent();
 protected:
 	std::vector<IGameScreen*> _screens;
-	IMainGame* _game=nullptr;
+	Game* _game = nullptr;
 	int _currentIndex = -1;
 };
 

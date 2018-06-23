@@ -1,10 +1,12 @@
 #pragma once
-#include "IMainGame.h"
+#include "Game.h"
 #include <algorithm>
-#include "GameScreen"
-#include "MenuScreen"
 
-class App : public IGameScreen
+#include "GameScreen.h"
+#include "MenuScreen.h"
+
+
+class App : public Game
 {
 public:
 	App();
